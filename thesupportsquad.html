@@ -9,21 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal:     #1D9E75;
-    --teal-mid: #5DCAA5;
-    --teal-lt:  #E1F5EE;
-    --teal-dk:  #085041;
-    --cream:    #FAC775;
-    --cream-lt: #FAEEDA;
-    --warm-white: #F7F4EE;
-    --ink:      #1C1C1A;
-    --ink-mid:  #4A4A46;
-    --ink-lt:   #8A8A84;
-    --white:    #FFFFFF;
+    --teal:       #1D9E75;
+    --teal-dk:    #085041;
+    --cream:      #F4E8D5;
+    --warm-white: #FAF8F4;
+    --white:      #FFFFFF;
+    --ink:        #1C1C1A;
+    --ink-mid:    #555555;
+    --border:     #E8E4DA;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -34,11 +30,7 @@
     font-size: 16px;
   }
 
-  h1, h2, h3 {
-    font-family: 'DM Serif Display', serif;
-    line-height: 1.2;
-  }
-
+  h1, h2, h3 { font-family: 'DM Serif Display', serif; line-height: 1.2; }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
 
@@ -48,7 +40,7 @@
     top: 0;
     z-index: 100;
     background: var(--white);
-    border-bottom: 1px solid #E8E4DA;
+    border-bottom: 1px solid var(--border);
     padding: 0 5%;
     display: flex;
     align-items: center;
@@ -63,33 +55,26 @@
     letter-spacing: -0.02em;
   }
 
-  .nav-logo span {
-    color: var(--teal);
-  }
+  .nav-logo span { color: var(--teal); }
 
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
 
   .nav-links a {
     font-size: 14px;
     color: var(--ink-mid);
     transition: color 0.2s;
   }
-
   .nav-links a:hover { color: var(--teal); }
 
-  /* ── HERO ── */
+  /* ── HERO (light) ── */
   .hero {
-    background: var(--teal-dk);
-    color: var(--white);
-    padding: 80px 5% 72px;
+    background: var(--warm-white);
+    padding: 88px 5% 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: center;
+    border-bottom: 1px solid var(--border);
   }
 
   .hero-eyebrow {
@@ -97,42 +82,41 @@
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--teal-mid);
+    color: var(--teal);
     margin-bottom: 16px;
   }
 
   .hero h1 {
     font-size: clamp(36px, 5vw, 58px);
-    color: var(--cream-lt);
+    color: var(--teal-dk);
     margin-bottom: 20px;
     letter-spacing: -0.02em;
   }
 
   .hero h1 em {
     font-style: italic;
-    color: var(--cream);
+    color: var(--teal);
   }
 
   .hero-sub {
-    font-size: 16px;
-    color: #A8D9C8;
+    font-size: 17px;
+    color: var(--ink-mid);
     max-width: 440px;
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
   .hero-cta {
     margin-top: 32px;
     display: inline-block;
-    background: var(--cream);
-    color: var(--teal-dk);
+    background: var(--teal-dk);
+    color: var(--white);
     font-size: 14px;
     font-weight: 500;
-    padding: 12px 28px;
+    padding: 13px 30px;
     border-radius: 40px;
     transition: background 0.2s, transform 0.15s;
   }
-
-  .hero-cta:hover { background: var(--white); transform: translateY(-1px); }
+  .hero-cta:hover { background: var(--teal); transform: translateY(-1px); }
 
   .hero-visual {
     display: flex;
@@ -144,19 +128,33 @@
     width: 260px;
     height: 260px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(255,255,255,0.12);
+    background: var(--cream);
+    border: 1.5px solid var(--border);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px;
     text-align: center;
     padding: 32px;
+    overflow: hidden;
   }
 
-  .hero-emblem .big { font-family: 'DM Serif Display', serif; font-size: 52px; color: var(--teal-mid); line-height: 1; }
-  .hero-emblem .small { font-size: 12px; letter-spacing: 0.1em; color: #8CCFB8; text-transform: uppercase; }
+  .hero-emblem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .hero-emblem .big { font-size: 52px; line-height: 1; }
+  .hero-emblem .small {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--teal-dk);
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
 
   /* ── SECTION SHELL ── */
   section { padding: 72px 5%; }
@@ -190,41 +188,23 @@
   .card {
     border-radius: 16px;
     padding: 28px 24px;
-    border: 1px solid transparent;
-  }
-
-  .card-teal {
-    background: var(--teal-lt);
-    border-color: #9FE1CB;
-  }
-
-  .card-cream {
-    background: var(--cream-lt);
-    border-color: #FAC775;
-  }
-
-  .card-white {
-    background: var(--warm-white);
-    border-color: #E8E4DA;
+    background: var(--white);
+    border: 1px solid var(--border);
   }
 
   .card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--cream);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 14px;
-    font-size: 20px;
+    font-size: 18px;
   }
 
-  .card-teal .card-icon { background: #5DCAA5; }
-  .card-cream .card-icon { background: #FAC775; }
-  .card-white .card-icon { background: #E8E4DA; }
-
   .card h3 {
-    font-family: 'DM Serif Display', serif;
     font-size: 18px;
     margin-bottom: 10px;
     color: var(--teal-dk);
@@ -232,14 +212,38 @@
 
   .card p {
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--ink-mid);
+  }
+
+  .card-accent {
+    border-top: 3px solid var(--teal);
+  }
+
+  .card-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--teal-dk);
+    font-style: italic;
+    opacity: 0.75;
+  }
+
+  /* ── PILL ── */
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 40px;
+    background: var(--cream);
+    color: var(--teal-dk);
+    margin-top: 14px;
   }
 
   /* ── TEAM ── */
   .team-section { background: var(--teal-dk); }
-  .team-section .section-eyebrow { color: var(--teal-mid); }
-  .team-section .section-title { color: var(--cream-lt); }
+  .team-section .section-eyebrow { color: rgba(255,255,255,0.45); }
+  .team-section .section-title { color: var(--white); }
 
   .team-grid {
     display: grid;
@@ -256,41 +260,36 @@
     text-align: center;
     transition: background 0.2s;
   }
-
   .team-card:hover { background: rgba(255,255,255,0.1); }
 
   .avatar {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: var(--teal-mid);
+    background: rgba(255,255,255,0.12);
     margin: 0 auto 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'DM Serif Display', serif;
     font-size: 24px;
-    color: var(--teal-dk);
+    color: var(--white);
     border: 2px solid rgba(255,255,255,0.15);
     overflow: hidden;
   }
 
-  .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
   .team-name {
     font-size: 14px;
     font-weight: 500;
-    color: var(--cream-lt);
+    color: var(--white);
     margin-bottom: 4px;
   }
 
   .team-role {
     font-size: 12px;
-    color: #8CCFB8;
+    color: rgba(255,255,255,0.45);
   }
 
   /* ── CHALLENGES ── */
@@ -306,12 +305,14 @@
   .challenge-card {
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid #E8E4DA;
+    border: 1px solid var(--border);
     background: var(--white);
     transition: transform 0.2s, box-shadow 0.2s;
   }
-
-  .challenge-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .challenge-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  }
 
   .challenge-num {
     background: var(--teal);
@@ -323,8 +324,6 @@
     align-items: center;
     justify-content: space-between;
   }
-
-  .challenge-num.cream-bg { background: var(--cream); color: var(--teal-dk); }
 
   .challenge-video-wrap {
     position: relative;
@@ -365,39 +364,80 @@
 
   .challenge-coming p {
     font-size: 12px;
-    color: #8CCFB8;
+    color: rgba(255,255,255,0.5);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .challenge-body { padding: 16px; }
+  .challenge-body { padding: 16px 18px; }
   .challenge-body h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--teal-dk);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   .challenge-body p { font-size: 13px; color: var(--ink-mid); }
 
-  /* ── CHALLENGE 6 (this website) ── */
+  /* ── CHALLENGE 6 ── */
   .ch6-card {
-    background: linear-gradient(135deg, var(--teal-dk) 0%, #0F6E56 100%);
+    background: var(--teal-dk);
     border: none;
   }
-  .ch6-card .challenge-body { padding: 28px; text-align: center; }
-  .ch6-card .challenge-body h3 { color: var(--cream-lt); font-size: 20px; margin-bottom: 8px; }
-  .ch6-card .challenge-body p { color: #A8D9C8; font-size: 14px; }
-  .ch6-card .challenge-num { background: rgba(255,255,255,0.1); color: var(--cream-lt); }
+  .ch6-card .challenge-num {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+  }
+  .ch6-card .challenge-body {
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .ch6-card .challenge-body h3 {
+    color: var(--white);
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .ch6-card .challenge-body p {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    max-width: 260px;
+    margin: 0 auto;
+  }
 
   .ch6-badge {
     display: inline-block;
-    margin-top: 16px;
+    margin-top: 20px;
     background: var(--cream);
     color: var(--teal-dk);
     font-size: 12px;
     font-weight: 500;
     padding: 6px 18px;
     border-radius: 40px;
+  }
+
+  /* ── QUOTE BAND ── */
+  .quote-band {
+    background: var(--teal-dk);
+    padding: 56px 5%;
+    text-align: center;
+  }
+
+  .quote-band blockquote {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(20px, 3vw, 30px);
+    color: var(--white);
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .quote-band cite {
+    display: block;
+    margin-top: 16px;
+    font-size: 13px;
+    font-style: normal;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   /* ── FOOTER ── */
@@ -415,7 +455,7 @@
   .footer-brand h3 {
     font-family: 'DM Serif Display', serif;
     font-size: 22px;
-    color: var(--cream-lt);
+    color: var(--white);
     margin-bottom: 6px;
   }
 
@@ -440,19 +480,13 @@
     align-items: center;
     gap: 8px;
   }
+  .footer-links a:hover { color: var(--teal); }
 
-  .footer-links a:hover { color: var(--teal-mid); }
-
-  .footer-icon {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-    flex-shrink: 0;
-  }
+  .footer-icon { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
 
   .footer-bottom {
     width: 100%;
-    padding-top: 32px;
+    padding-top: 28px;
     border-top: 1px solid #2C2C28;
     font-size: 12px;
     color: #5A5A54;
@@ -462,30 +496,14 @@
     gap: 8px;
   }
 
-  /* ── UTILITIES ── */
-  .pill {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 40px;
-    background: var(--teal-lt);
-    color: var(--teal-dk);
-  }
-
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 56px 5% 48px;
-    }
+    .hero { grid-template-columns: 1fr; padding: 56px 5% 48px; }
     .hero-visual { display: none; }
     nav .nav-links { display: none; }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
@@ -507,14 +525,15 @@
     <p class="hero-eyebrow">E-Lab Think Tank · Rwanda</p>
     <h1>Art, design &amp;<br><em>cultural roots</em><br>as a launchpad.</h1>
     <p class="hero-sub">
-      We believe Rwanda's rich heritage isn't just history — it's the raw material for the next generation of entrepreneurs.
+      We are building soft skills through art, design &amp; culture — so Rwanda's next generation can turn heritage into opportunity.
     </p>
     <a href="#mission" class="hero-cta">Explore our journey ↓</a>
   </div>
   <div class="hero-visual">
     <div class="hero-emblem">
+      <!-- Replace with: <img src="./img/group.jpg" alt="The Support Squad"> -->
       <div class="big">🌿</div>
-      <div class="small">The Support<br>Squad</div>
+      <div class="small">Group photo</div>
     </div>
   </div>
 </section>
@@ -526,7 +545,7 @@
 
   <div class="cards-3">
 
-    <div class="card card-teal">
+    <div class="card card-accent">
       <div class="card-icon">🎯</div>
       <h3>Mission</h3>
       <p>
@@ -534,29 +553,36 @@
       </p>
     </div>
 
-    <div class="card card-cream">
+    <div class="card card-accent">
       <div class="card-icon">📌</div>
       <h3>The Problem</h3>
       <p>
         Over 90% of Rwanda's workforce lacks adequate soft skills (African Development Bank, 2024). Despite the CBC curriculum's promise, teachers default to rote instruction — hundreds of thousands of students graduate without ever using Rwanda's rich creative heritage as a tool for growth.
       </p>
-      <p style="margin-top:10px; font-size:13px; color:#854F0B; font-style:italic;">
+      <p class="card-note">
         If not addressed by 2030, Rwanda risks losing a generation that could have turned its cultural richness into opportunity.
       </p>
     </div>
 
-    <div class="card card-white">
+    <div class="card card-accent">
       <div class="card-icon">💡</div>
       <h3>Our Solution</h3>
       <p>
         We tap into the untouched creative and cultural foundation already within Rwandan traditions, crafts, and artistic identity — turning them into a curriculum for entrepreneurship and self-expression.
       </p>
-      <br>
       <span class="pill">Prototype in progress</span>
     </div>
 
   </div>
 </section>
+
+<!-- QUOTE BAND -->
+<div class="quote-band">
+  <blockquote>
+    "Rwanda's cultural richness isn't just history — it's the raw material for the next generation of entrepreneurs."
+  </blockquote>
+  <cite>The Support Squad · E-Lab 2025</cite>
+</div>
 
 <!-- TEAM -->
 <section class="team-section" id="team">
@@ -566,41 +592,38 @@
   <div class="team-grid">
 
     <div class="team-card">
-      <div class="avatar">
-        <!-- Replace with: <img src="photo1.jpg" alt="Name"> -->
-        A
-      </div>
-      <div class="team-name">Member Name</div>
+      <div class="avatar"><img src="./img/igor.jpeg" alt="Igor Kayitaba"></div>
+      <div class="team-name">Igor Kayitaba</div>
       <div class="team-role">Role / Focus</div>
     </div>
 
     <div class="team-card">
-      <div class="avatar">B</div>
-      <div class="team-name">Member Name</div>
+      <div class="avatar"><img src="./img/gloria.png" alt="Gloria Karire"></div>
+      <div class="team-name">Gloria Karire</div>
       <div class="team-role">Role / Focus</div>
     </div>
 
     <div class="team-card">
-      <div class="avatar">C</div>
-      <div class="team-name">Member Name</div>
+      <div class="avatar"><img src="./img/sonia.jpeg" alt="Sonia Isimbi"></div>
+      <div class="team-name">Sonia Isimbi</div>
       <div class="team-role">Role / Focus</div>
     </div>
 
     <div class="team-card">
-      <div class="avatar">D</div>
-      <div class="team-name">Member Name</div>
+      <div class="avatar"><img src="./img/kellia.png" alt="Kellia Teta"></div>
+      <div class="team-name">Kellia Teta</div>
       <div class="team-role">Role / Focus</div>
     </div>
 
     <div class="team-card">
-      <div class="avatar">E</div>
-      <div class="team-name">Member Name</div>
+      <div class="avatar"><img src="./img/joakim.png" alt="Joakim Kakesa"></div>
+      <div class="team-name">Joakim Kakesa</div>
       <div class="team-role">Role / Focus</div>
     </div>
 
     <div class="team-card">
-      <div class="avatar">F</div>
-      <div class="team-name">Member Name</div>
+      <div class="avatar"><img src="./img/rita.png" alt="Rita Umutoni"></div>
+      <div class="team-name">Rita Umutoni</div>
       <div class="team-role">Role / Focus</div>
     </div>
 
@@ -614,98 +637,84 @@
 
   <div class="challenges-grid">
 
-    <!-- Challenge 1 -->
     <div class="challenge-card">
       <div class="challenge-num">
         <span>Challenge 01</span>
-        <span style="font-size:11px; opacity:0.7;">✓ Complete</span>
+        <span style="font-size:11px;opacity:0.7;">✓ Complete</span>
       </div>
       <div class="challenge-video-wrap">
         <iframe src="https://www.youtube.com/embed/WYjI4mbn4gI" allowfullscreen loading="lazy" title="Challenge 1"></iframe>
       </div>
       <div class="challenge-body">
-        <h3>Challenge 1</h3>
-        <p>Watch our first E-Lab challenge above.</p>
+        <h3>Get to Know Us</h3>
+        <p>An introduction to The Support Squad and our E-Lab journey.</p>
       </div>
     </div>
 
-    <!-- Challenge 2 -->
     <div class="challenge-card">
-      <div class="challenge-num cream-bg">
+      <div class="challenge-num">
         <span>Challenge 02</span>
-        <span style="font-size:11px; opacity:0.7;">✓ Complete</span>
+        <span style="font-size:11px;opacity:0.7;">✓ Complete</span>
       </div>
       <div class="challenge-video-wrap">
         <iframe src="https://www.youtube.com/embed/IBU-63U8BfA" allowfullscreen loading="lazy" title="Challenge 2"></iframe>
       </div>
       <div class="challenge-body">
-        <h3>Challenge 2</h3>
-        <p>Watch our second E-Lab challenge above.</p>
+        <h3>Nyamirambo</h3>
+        <p>Exploring a vibrant neighborhood in Kigali and its cultural energy.</p>
       </div>
     </div>
 
-    <!-- Challenge 3 -->
     <div class="challenge-card">
       <div class="challenge-num">
         <span>Challenge 03</span>
-        <span style="font-size:11px; opacity:0.7;">✓ Complete</span>
+        <span style="font-size:11px;opacity:0.7;">✓ Complete</span>
       </div>
       <div class="challenge-video-wrap">
         <iframe src="https://www.youtube.com/embed/xbca8H2vm4Y" allowfullscreen loading="lazy" title="Challenge 3"></iframe>
       </div>
       <div class="challenge-body">
-        <h3>Challenge 3</h3>
-        <p>Watch our third E-Lab challenge above.</p>
+        <h3>Giving Back</h3>
+        <p>How we engaged and gave back to our community.</p>
       </div>
     </div>
 
-    <!-- Challenge 4 -->
     <div class="challenge-card">
-      <div class="challenge-num cream-bg">
+      <div class="challenge-num">
         <span>Challenge 04</span>
-        <span style="font-size:11px; opacity:0.7; font-style:italic;">Coming soon</span>
+        <span style="font-size:11px;opacity:0.7;">✓ Complete</span>
       </div>
       <div class="challenge-video-wrap">
-        <div class="challenge-coming">
-          <div class="dot">⏳</div>
-          <p>Coming soon</p>
-        </div>
+        <iframe src="https://www.youtube.com/embed/PARK1S39b9s" allowfullscreen loading="lazy" title="Challenge 4"></iframe>
       </div>
       <div class="challenge-body">
-        <h3>Challenge 4</h3>
-        <p>We're working on it. Check back soon.</p>
+        <h3>Inema Arts Center</h3>
+        <p>A conversation with the manager of Inema Arts Center.</p>
       </div>
     </div>
 
-    <!-- Challenge 5 -->
     <div class="challenge-card">
       <div class="challenge-num">
         <span>Challenge 05</span>
-        <span style="font-size:11px; opacity:0.7; font-style:italic;">Coming soon</span>
+        <span style="font-size:11px;opacity:0.7;">✓ Complete</span>
       </div>
       <div class="challenge-video-wrap">
-        <div class="challenge-coming">
-          <div class="dot">⏳</div>
-          <p>Coming soon</p>
-        </div>
+        <iframe src="https://www.youtube.com/embed/ZWSR5oMXiu4" allowfullscreen loading="lazy" title="Challenge 5"></iframe>
       </div>
       <div class="challenge-body">
-        <h3>Challenge 5</h3>
-        <p>We're working on it. Check back soon.</p>
+        <h3>Launching Our Mission</h3>
+        <p>Bringing our vision to life and sharing it with the world.</p>
       </div>
     </div>
 
-    <!-- Challenge 6 — this website -->
     <div class="challenge-card ch6-card">
       <div class="challenge-num">
         <span>Challenge 06</span>
-        <span style="font-size:11px; opacity:0.7;">✓ You're here</span>
+        <span style="font-size:11px;opacity:0.7;">✓ You're here</span>
       </div>
       <div class="challenge-body">
         <h3>Digital Presence</h3>
-        <p>
-          Our sixth challenge was to build a website that tells the story of The Support Squad — who we are, what we stand for, and where we've been.
-        </p>
+        <p>Our sixth challenge was to build a website that tells the full story of The Support Squad.</p>
         <div class="ch6-badge">You're reading it ✦</div>
       </div>
     </div>
@@ -726,14 +735,12 @@
     <ul>
       <li>
         <a href="https://www.youtube.com/@thesupportsquad-6" target="_blank" rel="noopener">
-          <!-- YouTube icon -->
           <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           YouTube
         </a>
       </li>
       <li>
         <a href="https://www.instagram.com/thesupportsquad6" target="_blank" rel="noopener">
-          <!-- Instagram icon -->
           <svg class="footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.163 12 18.163s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           Instagram
         </a>
@@ -751,7 +758,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span>© 2025 The Support Squad · E-Lab Rwanda</span>
+    <span>© 2026 The Support Squad · E-Lab Rwanda</span>
     <span>Turning heritage into opportunity.</span>
   </div>
 
